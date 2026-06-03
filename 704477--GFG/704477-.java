@@ -1,0 +1,24 @@
+class Solution {
+    static boolean isPerfect(int n) {
+        // code here
+         if(n == 1) return false;
+        
+        int sum = 1; 
+        
+        for(int i = 2; i * i <= n; i++) {
+            if(n % i == 0) {
+                sum += i;
+                
+                if(i != n / i) {
+                    sum += n / i;
+                }
+            }
+        }
+        
+        return (sum == n);
+    }
+};
+
+// Synced seamlessly with LeetHub Pro
+// Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+// Get it here: https://chromewebstore.google.com/detail/leethub-v4/bcilpkkbokcopmabingnndookdogmbna
