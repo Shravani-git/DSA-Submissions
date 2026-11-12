@@ -3,22 +3,31 @@ import java.util.*;
 
 class Solution {
     public boolean fourSum(int[] arr, int x) {
+
         int n = arr.length;
+        Arrays.sort(arr);
 
         for (int i = 0; i < n - 3; i++) {
+
             for (int j = i + 1; j < n - 2; j++) {
 
-                HashSet<Integer> set = new HashSet<>();
+                int left = j + 1;
+                int right = n - 1;
 
-                for (int k = j + 1; k < n; k++) {
+                while (left < right) {
 
-                    int required = x - arr[i] - arr[j] - arr[k];
+                    long sum = (long) arr[i] + arr[j]
+                             + arr[left] + arr[right];
 
-                    if (set.contains(required)) {
+                    if (sum == x) {
                         return true;
                     }
-
-                    set.add(arr[k]);
+                    else if (sum < x) {
+                        left++;
+                    }
+                    else {
+                        right--;
+                    }
                 }
             }
         }
